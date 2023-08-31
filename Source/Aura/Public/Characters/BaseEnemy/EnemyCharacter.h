@@ -17,6 +17,7 @@ class AURA_API AEnemyCharacter : public ABaseCharacter, public IEnemyInterface
 	GENERATED_BODY()
 
 public:
+	AEnemyCharacter();
 	UPROPERTY(BlueprintReadOnly)
 	bool bHighlighted = false;
 	
