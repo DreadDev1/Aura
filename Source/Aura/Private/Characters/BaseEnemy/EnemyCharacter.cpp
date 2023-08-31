@@ -3,11 +3,20 @@
 
 #include "Characters/BaseEnemy/EnemyCharacter.h"
 
+#include "AbilitySystemComponent.h"
 #include "Aura/Aura.h"
+#include "Framework/AbilitySystem/BaseAbilitySystemComponent.h"
+#include "Framework/AbilitySystem/Attributes/BaseAttributeSet.h"
 
 AEnemyCharacter::AEnemyCharacter()
 {
 	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
+
+	AbilitySystemComponent = CreateDefaultSubobject<UBaseAbilitySystemComponent>("AbilitySystemComponent");
+	AbilitySystemComponent->SetIsReplicated(true);
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
+
+	AttributeSet = CreateDefaultSubobject<UBaseAttributeSet>("AttributeSet");	 
 }
 
 void AEnemyCharacter::HighlightActor()
