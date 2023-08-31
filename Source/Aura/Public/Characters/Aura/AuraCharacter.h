@@ -13,5 +13,14 @@ UCLASS()
 class AURA_API AAuraCharacter : public ABaseCharacter
 {
 	GENERATED_BODY()
+
+public:
+	AAuraCharacter();
 	
+private:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	class USpringArmComponent* CameraBoom;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	class UCameraComponent* FollowCamera;
+
 };
