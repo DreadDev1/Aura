@@ -38,6 +38,7 @@ void ABaseEffectActor::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 
 		UBaseAttributeSet* MutableBaseAttributeSet = const_cast<UBaseAttributeSet*>(BaseAttributeSet);
 		MutableBaseAttributeSet->SetHealth(BaseAttributeSet->GetHealth() + 25.f);
+		MutableBaseAttributeSet->SetMana(BaseAttributeSet->GetMana() - 25.f);
 		Destroy();
 	}
 }
