@@ -6,12 +6,34 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "Framework/Interfaces/EnemyInterface.h"
 
 ABasePlayerController::ABasePlayerController()
 {
 	bReplicates = true;
 }
 
+void ABasePlayerController::PlayerTick(float DeltaTime)
+{
+	Super::PlayerTick(DeltaTime);
+	CursorTrace();
+}
+
+void ABasePlayerController::CursorTrace()
+{
+	FHitResult CursorHit;
+	GetHitResultUnderCursor(ECC_Visibility, false, CursorHit);
+	if (!CursorHit.bBlockingHit) return;
+
+	LastActor = ThisActor;
+	ThisActor = Cast<IEnemyInterface>(CursorHit.GetActor());
+
+	if (LastActor != ThisActor)
+	{
+		if (LastActor) LastActor->UnHighlightActor();
+		if (ThisActor)ThisActor->HighlightActor();
+	}
+}
 void ABasePlayerController::BeginPlay()
 {
 	Super::BeginPlay();
@@ -55,3 +77,5 @@ void ABasePlayerController::Move(const FInputActionValue& InputActionValue)
 		ControlledPawn->AddMovementInput(RightDirection, InputAxisVector.X);
 	} 
 }
+
+

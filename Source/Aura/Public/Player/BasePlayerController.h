@@ -6,6 +6,7 @@
 #include "GameFramework/PlayerController.h"
 #include "BasePlayerController.generated.h"
 
+class IEnemyInterface;
 class UBaseInputConfig;
 class UInputMappingContext;
 class UInputAction;
@@ -19,10 +20,14 @@ class AURA_API ABasePlayerController : public APlayerController
 	GENERATED_BODY()
 public:
 	ABasePlayerController();
+	virtual void PlayerTick(float DeltaTime) override;
+	
 protected:
 	virtual void BeginPlay() override;
 
 	virtual void SetupInputComponent() override;
+
+	
 	
 private:
 	UPROPERTY(EditAnywhere, Category = "Input")
@@ -33,5 +38,9 @@ private:
 	// TObjectPtr<UBaseInputConfig> InputConfig;
 
 	void Move(const FInputActionValue& InputActionValue);
+
+	void CursorTrace();
+	IEnemyInterface* LastActor;
+	IEnemyInterface* ThisActor;
 
 };
