@@ -10,7 +10,7 @@ class UAbilitySystemComponent;
 class UAttributeSet;
 struct FWidgetControllerParams;
 
-USTRUCT(BlueprintType)
+USTRUCT(BlueprintType, Blueprintable)
 struct FWidgetControllerParams
 {
 	GENERATED_BODY()
@@ -39,6 +39,7 @@ class AURA_API UBaseWidgetController : public UObject
 public:
 	UFUNCTION(BlueprintCallable)
 	void SetWidgetControllerParams(const FWidgetControllerParams& WCParams);
+	virtual void BroadcastInitialValues();
 protected:
 
 	UPROPERTY(BlueprintReadOnly, Category="WidgetController")
