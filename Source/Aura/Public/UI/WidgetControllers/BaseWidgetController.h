@@ -6,9 +6,9 @@
 #include "UObject/NoExportTypes.h"
 #include "BaseWidgetController.generated.h"
 
-/**
- * 
- */
+class UAbilitySystemComponent;
+class UAttributeSet;
+
 UCLASS()
 class AURA_API UBaseWidgetController : public UObject
 {
