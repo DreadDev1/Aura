@@ -4,8 +4,6 @@
 #include "Actors/BaseEffectActor.h"
 
 #include "AbilitySystemBlueprintLibrary.h"
-#include "AbilitySystemInterface.h"
-#include "Components/SphereComponent.h"
 #include "Framework/AbilitySystem/Attributes/BaseAttributeSet.h"
 
 class UBaseAttributeSet;
@@ -15,8 +13,6 @@ ABaseEffectActor::ABaseEffectActor()
 	PrimaryActorTick.bCanEverTick = false;
 
 	SetRootComponent(CreateDefaultSubobject<USceneComponent>("Scene Root"));
-	
-
 }
 
 void ABaseEffectActor::BeginPlay()
@@ -31,10 +27,15 @@ void ABaseEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGam
 
 	check(GameplayEffectClass);
 	FGameplayEffectContextHandle EffectContextHandle = TargetASC->MakeEffectContext();
-	// Source - Instigator of Gameplay Effect
 	EffectContextHandle.AddSourceObject(this);
 	const FGameplayEffectSpecHandle EffectSpecHandle = TargetASC->MakeOutgoingSpec(GameplayEffectClass, 1.f, EffectContextHandle);
-	TargetASC->ApplyGameplayEffectSpecToSelf(*EffectSpecHandle.Data.Get());
+	const FActiveGameplayEffectHandle ActiveEffectHandle = TargetASC->ApplyGameplayEffectSpecToSelf(*EffectSpecHandle.Data.Get());
+
+	const bool bIsInfinite = EffectSpecHandle.Data.Get()->Def.Get()->DurationPolicy == EGameplayEffectDurationType::Infinite;
+	if (bIsInfinite && InfiniteEffectRemovalPolicy == EEffectRemovalPolicy::RemoveOnEndOverlap)
+	{
+		ActiveEffectHandles.Add(ActiveEffectHandle, TargetASC);	
+	}
 }
 
 void ABaseEffectActor::OnOverlap(AActor* TargetActor)
@@ -46,6 +47,10 @@ void ABaseEffectActor::OnOverlap(AActor* TargetActor)
 	if (DurationEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnOverlap)
 	{
 		ApplyEffectToTarget(TargetActor, DurationGameplayEffectClass);
+	}
+	if (InfiniteEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnOverlap)
+	{
+		ApplyEffectToTarget(TargetActor, InfiniteGameplayEffectClass);
 	}
 }
 
