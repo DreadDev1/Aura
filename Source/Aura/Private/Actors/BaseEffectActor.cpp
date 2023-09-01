@@ -37,5 +37,13 @@ void ABaseEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGam
 	TargetASC->ApplyGameplayEffectSpecToSelf(*EffectSpecHandle.Data.Get());
 }
 
+void ABaseEffectActor::OnOverlap(AActor* TargetActor)
+{
+}
+
+void ABaseEffectActor::OnEndOverlap(AActor* TargetActor)
+{
+}
+
 
 
