@@ -20,7 +20,8 @@ public:
 	virtual void OnRep_PlayerState() override;
 	
 private:
-	void InitAbilityActorInfo();
+	virtual void InitAbilityActorInfo() override;
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* CameraBoom;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))

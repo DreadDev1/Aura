@@ -32,6 +32,7 @@ protected:
 	FName WeaponTipSocketName;
 
 	virtual void BeginPlay() override;
+	virtual void InitAbilityActorInfo();
 
 	
 

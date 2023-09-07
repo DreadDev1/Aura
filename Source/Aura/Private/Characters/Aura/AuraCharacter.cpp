@@ -6,6 +6,7 @@
 #include "AbilitySystemComponent.h"
 #include "Player/BasePlayerState.h"
 #include "Camera/CameraComponent.h"
+#include "Framework/AbilitySystem/BaseAbilitySystemComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Player/BasePlayerController.h"
@@ -60,6 +61,7 @@ void AAuraCharacter::InitAbilityActorInfo()
 	ABasePlayerState* AuraPlayerState = GetPlayerState<ABasePlayerState>();
 	check(AuraPlayerState);
 	AuraPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(AuraPlayerState, this);
+	Cast<UBaseAbilitySystemComponent>(AuraPlayerState->GetAbilitySystemComponent())->AbilityActorInfoSet();
 	AbilitySystemComponent = AuraPlayerState->GetAbilitySystemComponent();
 	AttributeSet = AuraPlayerState->GetAttributeSet();
 
