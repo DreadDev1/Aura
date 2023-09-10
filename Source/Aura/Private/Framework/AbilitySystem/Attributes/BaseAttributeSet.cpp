@@ -23,8 +23,23 @@ void UBaseAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 	DOREPLIFETIME_CONDITION_NOTIFY(UBaseAttributeSet, Health, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UBaseAttributeSet, Mana, COND_None, REPNOTIFY_Always);
 #pragma endregion
-
+	
+#pragma region Primary Attributes
+	DOREPLIFETIME_CONDITION_NOTIFY(UBaseAttributeSet, Strength, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UBaseAttributeSet, Intelligence, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UBaseAttributeSet, Resilience, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UBaseAttributeSet, Vigor, COND_None, REPNOTIFY_Always);
+#pragma endregion	
+	
 #pragma region Secondary Attributes
+	DOREPLIFETIME_CONDITION_NOTIFY(UBaseAttributeSet, Armor, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UBaseAttributeSet, ArmorPenetration, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UBaseAttributeSet, BlockChance, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UBaseAttributeSet, CritHitChance, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UBaseAttributeSet, CritHitDamage, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UBaseAttributeSet, CritHitResist, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UBaseAttributeSet, HealthRegen, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UBaseAttributeSet, ManaRegen, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UBaseAttributeSet, MaxHealth, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UBaseAttributeSet, MaxMana, COND_None, REPNOTIFY_Always);	
 #pragma endregion
@@ -107,7 +122,68 @@ void UBaseAttributeSet::OnRep_Mana(const FGameplayAttributeData OldMana) const
 }
 #pragma endregion
 
+#pragma region Primary Attributes
+void UBaseAttributeSet::OnRep_Strength(const FGameplayAttributeData OldStrength) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UBaseAttributeSet, Strength, OldStrength)
+}
+
+void UBaseAttributeSet::OnRep_Intelligence(const FGameplayAttributeData OldIntelligence) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UBaseAttributeSet, Intelligence, OldIntelligence)
+}
+
+void UBaseAttributeSet::OnRep_Resilience(const FGameplayAttributeData OldResilience) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UBaseAttributeSet, Resilience, OldResilience)
+}
+
+void UBaseAttributeSet::OnRep_Vigor(const FGameplayAttributeData OldVigor) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UBaseAttributeSet, Vigor, OldVigor)
+}
+#pragma endregion
+
 #pragma region Secondary Attributes
+void UBaseAttributeSet::OnRep_Armor(const FGameplayAttributeData OldArmor) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UBaseAttributeSet, Armor, OldArmor);
+}
+void UBaseAttributeSet::OnRep_ArmorPenetration(const FGameplayAttributeData OldArmorPenetration) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UBaseAttributeSet, ArmorPenetration, OldArmorPenetration);
+}
+
+void UBaseAttributeSet::OnRep_BlockChance(const FGameplayAttributeData OldBlockChance) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UBaseAttributeSet, BlockChance, OldBlockChance);
+}
+
+void UBaseAttributeSet::OnRep_CritHitChance(const FGameplayAttributeData OldCritHitChance) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UBaseAttributeSet, CritHitChance, OldCritHitChance);
+}
+
+void UBaseAttributeSet::OnRep_CritHitDamage(const FGameplayAttributeData OldCritHitDamage) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UBaseAttributeSet, CritHitDamage, OldCritHitDamage);
+}
+
+void UBaseAttributeSet::OnRep_CritHitResist(const FGameplayAttributeData OldCritHitResist) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UBaseAttributeSet, CritHitResist, OldCritHitResist);
+}
+
+void UBaseAttributeSet::OnRep_HealthRegen(const FGameplayAttributeData OldHealthRegen) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UBaseAttributeSet, HealthRegen, OldHealthRegen);
+}
+
+void UBaseAttributeSet::OnRep_ManaRegen(const FGameplayAttributeData OldManaRegen) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UBaseAttributeSet, ManaRegen, OldManaRegen);
+}
+
 void UBaseAttributeSet::OnRep_MaxHealth(const FGameplayAttributeData OldMaxHealth) const
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UBaseAttributeSet, MaxHealth, OldMaxHealth);
@@ -117,6 +193,4 @@ void UBaseAttributeSet::OnRep_MaxMana(const FGameplayAttributeData OldMaxMana) c
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UBaseAttributeSet, MaxMana, OldMaxMana);
 }
-
-
 #pragma endregion 
