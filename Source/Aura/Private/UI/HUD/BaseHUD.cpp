@@ -6,6 +6,7 @@
 #include "UI/BaseUserWidget.h"
 #include "UI/WidgetControllers/OverlayWidgetController.h"
 #include "Framework/AbilitySystem/Attributes/BaseAttributeSet.h"
+#include "UI/WidgetControllers/AttributeMenuWidgetController.h"
 
 
 UOverlayWidgetController* ABaseHUD::GetOverlayWidgetController(const FWidgetControllerParams& WCParams)
@@ -20,6 +21,17 @@ UOverlayWidgetController* ABaseHUD::GetOverlayWidgetController(const FWidgetCont
 	}
 	return OverlayWidgetController;
 	
+}
+
+UAttributeMenuWidgetController* ABaseHUD::GetAttributeMenuWidgetController(const FWidgetControllerParams& WCParams)
+{
+	if (AttributeMenuWidgetController == nullptr)
+	{
+		AttributeMenuWidgetController = NewObject<UAttributeMenuWidgetController>(this, AttributeMenuWidgetControllerClass);
+		AttributeMenuWidgetController->SetWidgetControllerParams(WCParams);
+		AttributeMenuWidgetController->BindCallbacksToDependencies();
+	}
+	return AttributeMenuWidgetController;
 }
 
 void ABaseHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS)
