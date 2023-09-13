@@ -12,7 +12,7 @@ void FBaseGameplayTags::InitializeNativeGameplayTags()
 	GameplayTags.Attributes_Vital_Health = UGameplayTagsManager::Get().AddNativeGameplayTag(
 	FName("Attributes.Vital.Health"), FString("Amount of Player Health"));
 	GameplayTags.Attributes_Vital_Mana = UGameplayTagsManager::Get().AddNativeGameplayTag(
-	FName("Attributes.Vital.Mana"), FString("Amount of Player Mana"));
+	FName("Attributes.Vital."), FString("Amount of Player Mana"));
 #pragma endregion
 	
 #pragma region Primary Attributes 
