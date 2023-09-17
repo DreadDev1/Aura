@@ -15,9 +15,11 @@ class AURA_API UBaseAssetManager : public UAssetManager
 	GENERATED_BODY()
 
 public:
+
 	static UBaseAssetManager& Get();
 
 protected:
+
 	virtual void StartInitialLoading() override;
 	
 };

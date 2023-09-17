@@ -3,7 +3,7 @@
 
 #include "Framework/AbilitySystem/Data/AttributeInfo.h"
 
-FBaseAttributeInfo UAttributeInfo::FindAttributeInfoForTag(FGameplayTag& AttributeTag, bool bLogNotFound) const
+FBaseAttributeInfo UAttributeInfo::FindAttributeInfoForTag(const FGameplayTag& AttributeTag, bool bLogNotFound) const
 {
 	for (const FBaseAttributeInfo Info : AttributeInformation)
 	{

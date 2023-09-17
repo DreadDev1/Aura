@@ -8,13 +8,6 @@ FBaseGameplayTags FBaseGameplayTags::GameplayTags;
 
 void FBaseGameplayTags::InitializeNativeGameplayTags()
 {
-#pragma region Vital Attributes 
-	GameplayTags.Attributes_Vital_Health = UGameplayTagsManager::Get().AddNativeGameplayTag(
-	FName("Attributes.Vital.Health"), FString("Amount of Player Health"));
-	GameplayTags.Attributes_Vital_Mana = UGameplayTagsManager::Get().AddNativeGameplayTag(
-	FName("Attributes.Vital."), FString("Amount of Player Mana"));
-#pragma endregion
-	
 #pragma region Primary Attributes 
 	GameplayTags.Attributes_Primary_Strength = UGameplayTagsManager::Get().AddNativeGameplayTag(
 	FName("Attributes.Primary.Strength"), FString("Increases Physical Damage"));
@@ -24,8 +17,7 @@ void FBaseGameplayTags::InitializeNativeGameplayTags()
 	FName("Attributes.Primary.Resilience"), FString("Increases Armor and Armor Penetration"));
 	GameplayTags.Attributes_Primary_Vigor = UGameplayTagsManager::Get().AddNativeGameplayTag(
 	FName("Attributes.Primary.Vigor"), FString("Increases Heath"));
-#pragma endregion
-	
+#pragma endregion 
 #pragma region Secondary Attributes 
 	GameplayTags.Attributes_Secondary_Armor = UGameplayTagsManager::Get().AddNativeGameplayTag(
 	FName("Attributes.Secondary.Armor"), FString("Reduce Damage taken improves Block Chance"));
@@ -47,16 +39,5 @@ void FBaseGameplayTags::InitializeNativeGameplayTags()
 	FName("Attributes.Secondary.MaxHealth"), FString("Max Health for Player"));
 	GameplayTags.Attributes_Secondary_MaxMana = UGameplayTagsManager::Get().AddNativeGameplayTag(
 	FName("Attributes.Secondary.MaxMana"), FString("Max Mana for Player"));
-#pragma endregion
-
-// #pragma region Messages
-// 	GameplayTags.Messages_HealthCrystal = UGameplayTagsManager::Get().AddNativeGameplayTag(
-// 	FName("Messages.HealthCrystal"), FString("Replenish players Health over time"));
-// 	GameplayTags.Messages_HealthPotion = UGameplayTagsManager::Get().AddNativeGameplayTag(
-// 	FName("Messages.HealthPotion"), FString("Amount of Player HealthPotion"));
-// 	GameplayTags.Messages_ManaCrystal = UGameplayTagsManager::Get().AddNativeGameplayTag(
-// 	FName("Messages.ManaCrystal"), FString("Amount of Player ManaPotion"));
-// 	GameplayTags.Messages_ManaPotion = UGameplayTagsManager::Get().AddNativeGameplayTag(
-// 	FName("Messages.ManaPotion"), FString("Amount of Player ManaPotion"));
-// #pragma endregion
+#pragma endregion 
 }
