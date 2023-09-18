@@ -16,7 +16,10 @@ void UAttributeMenuWidgetController::BroadcastInitialValues()
 {
 	UBaseAttributeSet* AS = CastChecked<UBaseAttributeSet>(AttributeSet);
 	check(AttributeInfo);
-	FBaseAttributeInfo Info = AttributeInfo->FindAttributeInfoForTag(FBaseGameplayTags::Get().Attributes_Primary_Strength);
-	Info.AttributeValue = AS->GetStrength();
-	AttributeInfoDelegate.Broadcast(Info);
+	for (auto& Pair : AS->TagsToAttributes)
+	{
+		FBaseAttributeInfo Info = AttributeInfo->FindAttributeInfoForTag(Pair.Key);
+		Info.AttributeValue = Pair.Value().GetNumericValue(AS);
+		AttributeInfoDelegate.Broadcast(Info);
+	}
 }
