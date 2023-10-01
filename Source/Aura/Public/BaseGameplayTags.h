@@ -34,6 +34,15 @@ public:
 	FGameplayTag Attributes_Secondary_MaxHealth;
 	FGameplayTag Attributes_Secondary_MaxMana;
 #pragma endregion
+
+#pragma region Input Action Buttons 	
+	FGameplayTag PrimaryAction_Input;
+	FGameplayTag SecondaryAction_Input;
+	FGameplayTag Key1_Input;
+	FGameplayTag Key3_Input;
+	FGameplayTag Key2_Input;
+	FGameplayTag Key4_Input;
+#pragma endregion
 	
 protected:
 

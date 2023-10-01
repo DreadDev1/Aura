@@ -39,5 +39,20 @@ void FBaseGameplayTags::InitializeNativeGameplayTags()
 	FName("Attributes.Secondary.MaxHealth"), FString("Max Health for Player"));
 	GameplayTags.Attributes_Secondary_MaxMana = UGameplayTagsManager::Get().AddNativeGameplayTag(
 	FName("Attributes.Secondary.MaxMana"), FString("Max Mana for Player"));
-#pragma endregion 
+#pragma endregion
+#pragma region Input Action Buttons 
+	GameplayTags.PrimaryAction_Input = UGameplayTagsManager::Get().AddNativeGameplayTag(
+FName("InputTag.PrimaryAction_Input"), FString("Input Tag for Primary Action"));
+	GameplayTags.SecondaryAction_Input = UGameplayTagsManager::Get().AddNativeGameplayTag(
+FName("InputTag.SecondaryAction_Input"), FString("Input Tag for Secondary Action_"));
+	GameplayTags.Key1_Input = UGameplayTagsManager::Get().AddNativeGameplayTag(
+FName("InputTag.Key1_Input"), FString("Input Tag for 1 Key"));
+	GameplayTags.Key2_Input = UGameplayTagsManager::Get().AddNativeGameplayTag(
+FName("InputTag.Key2_Input"), FString("Input Tag for 2 Key"));
+	GameplayTags.Key3_Input = UGameplayTagsManager::Get().AddNativeGameplayTag(
+FName("InputTag.Key3_Input"), FString("Input Tag for 3 Key"));
+	GameplayTags.Key4_Input = UGameplayTagsManager::Get().AddNativeGameplayTag(
+FName("InputTag.Key4_Input"), FString("Input Tag for 4 Key"));
+#pragma endregion
+
 }
